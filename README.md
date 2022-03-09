@@ -9,7 +9,7 @@ This is the official repository for the paper [Positional Encoder Graph Neural N
 
 ## Structure
 
-The source code for *PE-GNN* (using `PyTorch`) can be found in the `src` folder. It code builds on *[PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric)* (ICLR-W, 2019) and *[Space2Vec](https://github.com/gengchenmai/space2vec)* (ICLR, 2020).
+The source code for *PE-GNN* (using `PyTorch`) can be found in the `src` folder. Its built on *[PyTorch Geometric](https://github.com/pyg-team/pytorch_geometric)* (ICLR-W, 2019) and *[Space2Vec](https://github.com/gengchenmai/space2vec)* (ICLR, 2020).
 
 We also provide an interactive example notebook to test *PE-GNN* via Google Colab [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/konstantinklemmer/pe-gnn/blob/master/example.ipynb)
 	
