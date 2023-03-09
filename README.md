@@ -4,7 +4,7 @@
 
 *(Architecture of a naive GCN versus that of PE-GNN, enhanced with a positional encoder.)*
 
-This is the official repository for the paper [Positional Encoder Graph Neural Networks for Geographic Data](https://arxiv.org/abs/2111.10144) (Konstantin Klemmer, Nathan Safir, Daniel B. Neill).
+This is the official repository for the *AISTATS 2023* paper [Positional Encoder Graph Neural Networks for Geographic Data](https://arxiv.org/abs/2111.10144) (Konstantin Klemmer, Nathan Safir, Daniel B. Neill).
 
 
 ## Structure
@@ -18,12 +18,13 @@ We also provide an interactive example notebook to test *PE-GNN* via Google Cola
 If you want to cite our work, you can use the following reference:
 
 ```
-@misc{klemmer2021positional,
-    title={Positional Encoder Graph Neural Networks for Geographic Data},
-    author={Konstantin Klemmer and Nathan Safir and Daniel B Neill},
-    year={2021},
-    eprint={2111.10144},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG}
+@InProceedings{klemmer2023positional,
+  title = {Positional Encoder Graph Neural Networks for Geographic Data},
+  author = {Konstantin Klemmer and Nathan Safir and Daniel B Neill},
+  booktitle = {Proceedings of The 26th International Conference on Artificial Intelligence and Statistics},
+  year = {2023},
+  series = {Proceedings of Machine Learning Research},
+  publisher = {PMLR},
+  url = {https://arxiv.org/abs/2111.10144},
 }
 ```

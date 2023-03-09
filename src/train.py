@@ -1,74 +1,13 @@
-from sklearn.datasets import fetch_california_housing
-from sklearn.model_selection import train_test_split
-from torch.utils.data import Dataset
-import numpy as np
-from torch.utils.data import Sampler
-import random
-import torch
-import torch.nn.functional as F
-from torch import nn
-from torch_geometric.nn import GCNConv, knn_graph
-from torch.utils.data import DataLoader
-from sklearn.metrics import mean_squared_error
-from geopy.distance import distance
-import math
-import matplotlib.pyplot as plt
-
-import os
-import datetime
-import sys
-import requests
-from urllib.request import urlretrieve
-import urllib.request, json 
-import zipfile
-import subprocess
-
-import torch
-import torchvision.transforms as transforms
-import torchvision
-import torch.nn as nn
-import torch.nn.functional as F
-
-from decimal import Decimal, getcontext
-from torch.utils.data import TensorDataset, DataLoader
-from torch.utils.data import Dataset, IterableDataset, DataLoader
-
-import numpy as np
-import pandas as pd
-import scipy
-from scipy import sparse
-
-import matplotlib.pyplot as plt
-
-from sklearn.preprocessing import StandardScaler 
-from sklearn.preprocessing import normalize
-from sklearn import metrics
-
-import torch
 import argparse
-import glob
+from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
+import datetime
 import os
-import time
-import tqdm
+from tensorboardX import SummaryWriter
 
-from datetime import datetime
-import numpy as np
-from urllib.request import urlretrieve
-import urllib.request, json
-from torch.utils.data import Dataset, IterableDataset, DataLoader
-import torch.nn.parallel
-import torch.backends.cudnn as cudnn
-import torch.optim as optim
-from torch.utils.tensorboard import SummaryWriter
-
-
-import torch
-import torch.nn as nn
-from torch.nn import init
-import torch.nn.functional as F
-
-import torch.utils.data
-import math
+from data_utils import *
+from spatial_utils import *
+from model import *
 
 def train(args):
   # Get args
@@ -107,9 +46,6 @@ def train(args):
   if dset=="3d_road":
     c,x,y = get_3d_road_data()
     x = torch.ones(y.shape[0],1)
-
-  if sphere_transform==True:
-    c = norm_sphere(c)
 
   n = x.shape[0]
   n_train = np.round(n * train_size).astype(int)
