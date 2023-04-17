@@ -18,13 +18,18 @@ We also provide an interactive example notebook to test *PE-GNN* via Google Cola
 If you want to cite our work, you can use the following reference:
 
 ```
-@InProceedings{klemmer2023positional,
-  title = {Positional Encoder Graph Neural Networks for Geographic Data},
-  author = {Konstantin Klemmer and Nathan Safir and Daniel B Neill},
-  booktitle = {Proceedings of The 26th International Conference on Artificial Intelligence and Statistics},
-  year = {2023},
-  series = {Proceedings of Machine Learning Research},
-  publisher = {PMLR},
-  url = {https://arxiv.org/abs/2111.10144},
+@InProceedings{pmlr-v206-klemmer23a,
+  title = 	 {Positional Encoder Graph Neural Networks for Geographic Data},
+  author =       {Klemmer, Konstantin and Safir, Nathan S. and Neill, Daniel B.},
+  booktitle = 	 {Proceedings of The 26th International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {1379--1389},
+  year = 	 {2023},
+  editor = 	 {Ruiz, Francisco and Dy, Jennifer and van de Meent, Jan-Willem},
+  volume = 	 {206},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {25--27 Apr},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v206/klemmer23a/klemmer23a.pdf},
+  url = 	 {https://proceedings.mlr.press/v206/klemmer23a.html},
 }
 ```
