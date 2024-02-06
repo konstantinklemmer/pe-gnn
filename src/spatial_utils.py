@@ -67,7 +67,7 @@ def makeEdgeWeight(x, edge_index):
 
 # knn graph to adjacency matrix (probably already built)
 def knn_to_adj(knn, n):
-  return to_dense_adj(knn).squeeze()
+  return to_dense_adj(knn.flip(0)).squeeze()
 
 def normal_torch(tensor,min_val=0):
   t_min = torch.min(tensor)
