@@ -4,6 +4,7 @@ import math
 import torch
 import numpy as np
 import torch.nn.parallel
+from torch_geometric.utils import to_dense_adj
 
 def deg_to_rad(x):
   return x * math.pi / 180
@@ -20,13 +21,13 @@ def haversine(lon1, lat1, lon2, lat2):
     Calculate the great circle distance between two points 
     on the earth (specified in decimal degrees)
     """
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    lon1, lat1, lon2, lat2 = map(np.radians, [lon1, lat1, lon2, lat2])
  
     # haversine
     dlon = lon2 - lon1 
     dlat = lat2 - lat1 
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
+    a = np.sin(dlat/2)**2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon/2)**2
+    c = 2 * np.arcsin(np.sqrt(a)) 
     r = 6371 
     return c * r * 1000
 
@@ -56,24 +57,17 @@ def newDistance(a, b, nd_dist="great_circle"):
 
 # Helper function for edge weights
 def makeEdgeWeight(x, edge_index):
-  to = edge_index[0]
-  fro = edge_index[1]
-  edge_weight = []
-  for i in range(len(to)):
-    edge_weight.append(newDistance(x[to[i]],x[fro[i]])) # probably want to do inverse distance eventually
-  max_val = max(edge_weight)
-  rng = max_val - min(edge_weight)
-  edge_weight = [(max_val - elem) / rng for elem in edge_weight]
+  a = x[edge_index]
+  dist = haversine(a[0,:,0], a[0,:,1], a[1,:,0], a[1,:,1])
+  # dist = np.linalg.norm(a[0] - a[1], axis=1) # Euclidean
+  max_val = dist.max()
+  rng = max_val - dist.min()
+  edge_weight = (max_val - dist) / rng
   return torch.Tensor(edge_weight)
 
 # knn graph to adjacency matrix (probably already built)
 def knn_to_adj(knn, n):
-  adj_matrix = torch.zeros(n, n, dtype=float) #lil_matrix((n, n), dtype=float) 
-  for i in range(len(knn[0])):
-    tow = knn[0][i]
-    fro = knn[1][i]
-    adj_matrix[tow,fro] = 1 # should be bidectional?
-  return adj_matrix.T
+  return to_dense_adj(knn.flip(0)).squeeze()
 
 def normal_torch(tensor,min_val=0):
   t_min = torch.min(tensor)
